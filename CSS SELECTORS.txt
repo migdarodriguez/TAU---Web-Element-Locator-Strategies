@@ -1,0 +1,158 @@
+CHPATER 3
+Si la clase css tiene por nombre "article opinion" por 
+ejp, (además de tener id), puedo localizar el elemento
+buscando por el nombre de clase "article" o "opinion"
+solamente
+
+CHAPTER 4
+Usar CSS selectors
+Si se quiere usar con id puede  ser asi: #search_form_input
+Con descendientes, quiere decir que quiero un div
+con los dscendientes q menciono, sería asi:
+div.cw div.result
+Esto selecciona todos los elementos del div result si tiene descendientes 
+con el div.cw
+Si quiero seleccionar el boton 1 con tag "agree" del div con class "article opinion"
+y id "main-article" q tiene hijo al div section tengo 3 formas de hacerlo:
+
+1) #main-article button[name=’agree’]
+2) [name=’agree’]
+3) .section button:nth-child(1)
+
+Para relaciones PADRE-HIJO, se debe usar la flecha:
+div.cw > div.result
+Trae todos los hijos cw del div result
+
+Locate by Direct Children: li.zcm__item > a
+
+Cada vez q se usa una coma en un selector de CSS,
+actúa como un OR lógico:
+Locate by multiple selectors: ol > li, ul > li
+Con eso estoy seleccionando todos los elementos de la lista
+mostrada que aparecen en listas ordenadas O desordenadas
+
+BUSCAR POR ATRIBUTOS
+Se puede buscar también por los atributos del elemento
+usando corchetes, ejp:
+Locate by attribute existence: [style]
+
+PARA SELECCIONAR SOLO LOS DIV QUE TIENEN ATRIBUTO STYLE:
+Locate by tag with attribute: div[style]
+
+En el caso que hayan links con el atributo data-zci-link 
+Puedo decir "a[data-zci-link]" y eso mostraría los links con 
+ese atributo
+PERO si quisiera buscar para un valor particular, hacer esto:
+Locate by tag with attribute equality
+a[data-zci-link = 'images']
+Ubica de forma exclusiva el enlace de las imágenes en esos enlaces superiores
+
+Para buscar todos los div con la class result, se haría así:
+div[class*='result']
+NO SE PUEDE HACER ASI: div[class = 'result'] porque el igual es un operador
+duro y debe ser exactamente igual, por eso, usar el *
+
+****Esto de buscar igualdad para los atributos NO ES LA MEJOR OPCION
+
+LOCALIZAR USANDO PSEUDO CLASES
+Si tengo varios div con la clase "result" y uno que contiene un boton para
+"Mas Resultados" con la clase "results-more"
+Para seleccionar todos los div que tengan la class "result" pero NO la clase
+"results-more": 
+Locate by logical not pseudoclass: div.result:not(.result--more)
+
+SI QUIERO EL TERCER ELEMENTO DE los div con clase "result":
+div.result:nth-child(3)
+
+SI QUIERO SELECCIONAR UN ELEMENTO a DENTRO DE UN div
+SI el div se llama "div.footer_cards", y el elemnto q quiero es un "a"
+con data-id="tips", el codigo es:
+<a class="footer__card js-footer-card bg-clr--white" href="https://spreadprivacy.com/tag/device-privacy-tips/" data-id="tips" waprocessedanchor="true"><img class="footer__card__icon js-footer-lazysvg" data-src="/assets/icons/privacy-simplified.svg" alt="" aria-hidden="true" loading="lazy" height="50" width="50" src="/assets/icons/privacy-simplified.svg"><h3 class="footer__card__title tx-clr--slate">Protege tus Dispositivos</h3><p class="footer__text">
+**LO OBTENGO ASI:
+Por el propio link:
+div.footer_cards a[data-id='tips']
+Por el título:
+div.footer_cards a[data-id='tips'] .footer__card__title
+Por ícono:
+div.footer_cards a[data-id='tips'] .footer__card__icon
+Por el texto:
+div.footer_cards a[data-id='tips'] .footer__text
+Opcionalment, puedo agregar la flecha para relacion padre*hijo
+pero NO sería necesario:
+div.footer_cards a[data-id='tips'] > .footer_card_icon
+
+IMPORTANTE
+***********
+Los selectores CSS No pueden identificar de forma exclusiva ningún elemento de
+la página. Los selectores CSS nunca pueden seleccionar elementos por contexto 
+de texto, y no siempre pueden seleccionar elementos por índice.
+
+### Basic CSS Selector Examples
+
+Tag name: div
+
+Class name: .result
+
+Tag and class name: div.result
+
+ID: #search_form_input
+
+Descendants: div.cw div.result
+
+Direct children: li.zcm__item > a
+
+Multiple selectors: ol, ul
+
+Attribute existence: [style]
+
+Tag with attribute: div[style]
+
+Tag with attribute equality: a[data-zci-link='images']
+
+Tag with attribute contains: div[class*='results']
+
+Logical not pseudoclass: div.result:not(.result--more)
+
+Nth child pseudoclass: div.result:nth-child(5)
+
+
+XPATHS
+*******
+/html/body  busca el tag body q esta dentro del html
+
+Para buscar principal, se pone // y para buscar sus hijos directo, /. 
+Ejemplo: //ul/li/a  ESto busca ul y sus hijos li, a
+
+BUSCAR TODOS LOS DIV CON TODOS SUS HIJOS, SERIA ASI:
+//div//*
+
+PARA BUSCAR ELEMENTOS POR SU ATRIBUTO:
+//li[@class='zcm__item']     *Aqui se busca todos los li cuya clase sea='zcm__item'
+
+BUSCAR ELEMENTOS USANDO CONDICION AND / OR:
+EJEMPLO DE AND
+BUSCAR ICONO DE IMAGEN DONDE EL ANCHO (@width) Y EL ALTO (@height) SON MENOR QUE 20:
+//img[@width<20][@height<20] TAMBIEN ASI: //img[@width<20 and @height<20]
+
+EJEMPLO DE OR
+BUSCAR LOS INPUT Q EL atributo Name ='q' O el id ='search_form_input'
+//input[@name='q' or @id='search_form_input']
+
+CUANDO UN ELEMENTO TIENE 2 CLASES, EJP: class='result__snippet js-result-snippet "
+NO SE DEBE HACER UN AND / OR, sino  usar el 'contains' es decir una sub string operation:
+//div[contains(@class, 'result__snippet')]
+
+Usar FUNCION starts-with
+
+PARA BUSCAR UN INPUT SOLO POR CLASE
+//input[(@class= 'ui__input ui__inputMedium ui__inputRound header__input')]
+
+//div[contains(@class = 'result__snippet')]
+
+//button[contains(@class, 'header__searchButton')]
+//input[contains(@class= 'header__input')]
+
+
+
+
+

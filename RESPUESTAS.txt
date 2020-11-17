@@ -1,0 +1,55 @@
+CHAPTER 1 
+
+1 - B
+2 - D
+4 - B
+5 - D
+6 - A
+
+CHAPTER 2
+
+1 - B
+2 - A
+3 - A
+4 - D
+5 - A
+6 - C
+OJO! LA RESPUESTA SOBRE LO QUE PUEDE MODELAR EL DOM
+ES: HTML Y XML SOLAMENTE
+
+
+CHAPTER 3
+1 - D
+2 - B
+3 - A
+4 - B
+5 - A
+6 - D
+7 - C
+8 - C
+9 - D
+Si la clase css tiene por nombre "article opinion" por 
+ejp, (además de tener id), puedo localizar el elemento
+buscando por el nombre de clase "article" o "opinion"
+solamente
+
+CHAPTER 4
+1 - D
+2 - B
+3 - C
+4 - D
+5 - c
+6 - 
+
+div.cw div.result
+Esto selecciona todos los elementos del div result sólo
+si tiene descendientes con el div.cw
+Cada vez q se usa una coma en un selector de CSS,
+actúa como un OR lógico:
+Locate by multiple selectors: ol > li, ul > li
+
+EN LINKED - PARA EL CURSO PONER
+Pudo incluír más ayudas visuales para ubicarse en
+los temas que estaba conversando en el curso.
+Prefiero a Angie Jones
+
